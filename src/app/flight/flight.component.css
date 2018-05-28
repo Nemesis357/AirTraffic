@@ -1,0 +1,44 @@
+.flight-details {
+    margin: 10px auto 0;
+    width: 50%;
+}
+
+.flight-details h2{
+    
+    align-items: center;
+}
+
+.flight-details h2 img {
+    max-width: 120px;
+    width: 100%;
+}
+
+.flight-details h2 span {
+    flex: 1;
+    text-align: left;
+    font-size: 35px;
+}
+
+.trip {
+    padding: 10px 0;
+}
+
+.trip span {
+    color: #ffaa00;
+}
+
+.trip p {
+    color: #ff6c00;
+}
+
+.arrow {
+    max-width: 100px;
+}
+
+.airplane {
+    font-size: 20px;
+}
+
+.airplane span {
+    color: #00f1ff;
+}

@@ -1,0 +1,53 @@
+.listingContainer {
+    background-color: #1d1d1d;
+    padding: 10px 0;
+}
+
+.listingContainer ul{
+    list-style: none;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.flight {
+    display: flex;
+    border: 1px solid #9412d8;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    padding: 5px;
+    transition: all 1s ease;
+    background-color: #1d1d1d;
+    cursor: pointer;
+}
+
+.flight:hover {
+    box-shadow: inset 0 0 20px 5px #9412d8;
+    transform: scale(1.1);
+    margin: 10px 0;
+}
+
+.flight:hover div:first-child{
+    width: 120px;
+}
+
+.flight img, .flight div:last-child{
+    transition: all 1s ease;
+}
+
+.flight p {
+    padding: 5px;
+    font-size: 20px;
+}
+
+.flight div:first-child {
+    width: 100px;
+    height: 100px;
+    transition: all 1s ease;
+}
+
+.flight div:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
