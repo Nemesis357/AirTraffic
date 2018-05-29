@@ -1,8 +1,11 @@
 <div class="background">
-  <div class="prompt">
-    <p>Allow app to accass your location?</p>
-    <!-- <a routerLink="/listing">Yes</a> -->
-    <button (click)="goToListing()">Yes</button>
-    <a>No</a>
+  <div class="prompt-back">
+    <div class="prompt">
+      <p class="color_white">Allow app to accass your location?</p>
+      <div class="btns">
+        <button class="button accept" (click)="goToListing()">Yes</button>
+        <button class="button deny" (click)="popWarning()">No</button>
+      </div>
+    </div>
   </div>
 </div>

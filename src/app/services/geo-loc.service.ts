@@ -1,22 +1,37 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class GeoLocService {
-  geoLocUrl = 'http://ip-api.com/json';
-  // geoLocUrl = 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCLuDlHHxixtGbbhbI04zuXnL32dxN-9-8';
-  myLoc: {};
-  // updatedLocation = new EventEmitter();
-
-  // this.myLoc = {
-  //   lat: res.json().lat, lon: res.json().lon
-  // }
-
+  options = {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 0
+  };
 
   constructor(private http: Http) { }
 
   getLocation() {
-    return this.http.get(this.geoLocUrl);
+    if ("geolocation" in navigator) {
+      const obs = new Observable((observer) => {
+        let crd;
+        navigator.geolocation.getCurrentPosition((pos) => {
+            crd = pos.coords;
+            observer.next(crd)
+            observer.complete()
+        }, this.error, this.options)
+      })
+      return obs;
+    } else {
+      return new Observable((observer) => {
+        observer.next("Error")
+        observer.complete()
+      })
+    }
   }
 
+  error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
 }

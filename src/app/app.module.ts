@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -12,6 +14,7 @@ import { AircraftService } from './services/aircraft.service';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { FlightComponent } from './flight/flight.component';
 import { FormatPipe } from './pipes/format.pipe';
+import { DetailsPipe } from './pipes/details.pipe';
 
 
 const appRoutes: Routes = [
@@ -28,14 +31,16 @@ const appRoutes: Routes = [
     HomeComponent,
     ListingComponent,
     FlightComponent,
-    FormatPipe
+    FormatPipe,
+    DetailsPipe
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    BrowserAnimationsModule, ToastModule.forRoot()
   ],
   providers: [
     GeoLocService,

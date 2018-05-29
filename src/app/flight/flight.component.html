@@ -1,21 +1,22 @@
 <section class="container flightContainer color_white">
   <div *ngIf="flight; else noFlight" class="flight-details">
       <h2 class="display_flex">
-        <span>{{ flight.Op }}</span>
+        <span>{{ flight.Op | details }}</span>
         <img src="//logo.clearbit.com/{{flight.Op | format}}.com" 
         onError="this.src='../../assets/img/placeholder.png';" 
         alt="Logo image">
       </h2>
       <div class="trip display_flex">
         <div class="from">
-          <span>From:</span> <p>{{ flight.From }}</p>
+          <span>From:</span> <p>{{ flight.From | details }}</p>
         </div>
         <div class="arrow"><img src="../../assets/img/arrow_1.png" alt="Arrow image"></div>
         <div class="to">
-          <span>To:</span> <p>{{ flight.To }}</p>
+          <span>To:</span> <p>{{ flight.To | details }}</p>
         </div>
       </div>
-      <div class="airplane"><span>Airplane:</span> {{ flight.Mdl }}</div>
+      <div class="airplane"><span>Airplane:</span> {{ flight.Mdl | details }}</div>
+      <a class="back-link" routerLink="/listing"><img src="../../assets/img/back.png" alt="Back arrow"> Back to listing</a>
   </div>
   <ng-template #noFlight><p class="noFlight">Loading flight...</p></ng-template>
 </section>

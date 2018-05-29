@@ -1,11 +1,25 @@
-<section class="container listingContainer">
-    <ul>
+<section class="container listingContainer color_white">
+  <h2>Flights in the area: 0-100km</h2>
+  <p class="my-location" *ngIf="coords">
+    <span>My latitude: {{ coords.latitude | number:'1.2-3' }}</span> 
+    <span>My longitude: {{ coords.longitude | number:'1.2-3' }}</span> 
+    <span>Accuracy: {{ coords.accuracy }}m</span>
+  </p>
+    <ul *ngIf="flights; else loadingList">
       <li *ngFor="let flight of flights" class="flight" (click)="goToFlight(flight.Icao)">
-        <div><img src="../../assets/img/airplane.png"></div>
+        <div class="compass-image">
+          <img [ngStyle]="{'transform': 'rotate(' + flight.Trak + 'deg)'}" src="../../assets/img/airplane_top.png">
+          <span class="compass_n">N</span>
+          <span class="compass_e">E</span>
+          <span class="compass_s">S</span>
+          <span class="compass_w">W</span>
+        </div>
         <div>
           <p class="color_white">Flight altitude: {{ flight.Alt }}ft</p>
-          <p class="color_white">Flight id: {{ flight.Id}}</p>
+          <p class="color_white">Flight id: {{ flight.Id }}</p>
+          <p class="color_white">Company: {{ flight.Op }}</p>
         </div>
       </li>
-    </ul>      
+    </ul>
+    <ng-template #loadingList><p>Loading Flight list...</p></ng-template>
 </section>
